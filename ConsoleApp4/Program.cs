@@ -1,6 +1,6 @@
-﻿
+
 public class Class
-    { 
+{
 
     public static void Main(String[] args)
     {
@@ -14,51 +14,89 @@ public class Class
 */
 
 
-        int[] myArray = { 3, 6, 7 };
-        Resize(ref myArray,2);
+        int[] myArray = { 3, 6, 7, 8, 10, 12 };
+        Resize(ref myArray, 5);
+        //Insert(ref myArray,2,2);
         AddToFirstIndexInArray(ref myArray, 10);
-        AddToLastIndexInArray(ref myArray, 10);
-        AddToAnyIndexInArray(ref myArray, 10,3);
+        AddToLastIndexInArray(ref myArray, 11);
+
+
+        //AddToLastIndexInArray(ref myArray, 10);
+        //AddToAnyIndexInArray(ref myArray, 10,3);
     }
-    public static void Resize<T>(ref T[] myArray,int newSize)
+    public static void Resize<T>(ref T[] myArray, int newSize)
     {
-        T[] newarray= new T[newSize];
-        
+        T[] newarray = new T[newSize];
+
         for (int i = 0; i < myArray.Length && i < newarray.Length; i++)
         {
-            newarray[i]= myArray[i];
+            newarray[i] = myArray[i];
 
-        
+
         }
-        myArray= newarray;
+        myArray = newarray;
 
     }
-    public static void AddToFirstIndexInArray(ref int[] myArray,int n)
+    /*
+   public static void AddToFirstIndexInArray<T>(ref T[] myArray,T n)
+   {
+       T[] newarray = new T[myArray.Length+1];
+       newarray[0] = n;
+       for (int i = 0; i < myArray.Length && i < newarray.Length; i++)
+       {
+           newarray[i+1] = myArray[i];
+       }  
+       myArray = newarray;
+   }
+
+   public static void AddToLastIndexInArray<T>(ref T[] myArray, T n)
+   {
+       T[] newarray = new T[myArray.Length + 1];
+
+       for (int i = 0; i < myArray.Length && i < newarray.Length; i++)
+       {
+           newarray[i] = myArray[i];
+       }
+       newarray[newarray.Length-1] = n;
+       myArray = newarray;
+   }
+    */
+
+    public static void AddToFirstIndexInArray(ref int[] myArray, int value)
     {
-        myArray = new int[myArray.Length+1];
-        myArray[0] = n;
 
+        Insert(ref myArray, value, 0);
+        
     }
-    public static void AddToLastIndexInArray(ref int[] myArray, int n)
+    public static void AddToLastIndexInArray(ref int[] myArray, int value)
     {
-        myArray = new int[myArray.Length];
-        myArray[myArray.Length-1] = n;
+
+        Insert(ref myArray, value, myArray.Length);
 
     }
 
-    public static void AddToAnyIndexInArray(ref int[] myArray, int n,int place)
+    public static void Insert(ref int[] myArray, int value,int index)
     {
-        myArray = new int[myArray.Length + 1];
-        myArray[place] = n;
+         
+       int[] newArray = new int[myArray.Length + 1];
+       newArray[index] = value;
+       for (int i = 0; i < index; i++)
+        {
+            newArray[i] = myArray[i];
+
+
+        }
+        for (int i = index; i < myArray.Length; i++)
+        {
+            newArray[i+1] = myArray[i];
+
+
+        }
+        myArray=newArray;
 
     }
 
-    public static void RemoveFirstIndexInArray(ref int[] myArray, int n, int place)
-    {
-        myArray = new int[myArray.Length -1];
 
-
-    }
     
 
 }
