@@ -15,12 +15,12 @@ public class Class
 
 
         int[] myArray = { 3, 6, 7, 8, 10, 12 };
-        Resize(ref myArray, 5);
+       // Resize(ref myArray, 5);
         //Insert(ref myArray,2,2);
-        AddToFirstIndexInArray(ref myArray, 10);
-        AddToLastIndexInArray(ref myArray, 11);
-
-
+        //AddToFirstIndexInArray(ref myArray, 10);
+       // AddToLastIndexInArray(ref myArray, 11);
+        
+        RemoveAt(ref myArray, 2);
         //AddToLastIndexInArray(ref myArray, 10);
         //AddToAnyIndexInArray(ref myArray, 10,3);
     }
@@ -37,30 +37,7 @@ public class Class
         myArray = newarray;
 
     }
-    /*
-   public static void AddToFirstIndexInArray<T>(ref T[] myArray,T n)
-   {
-       T[] newarray = new T[myArray.Length+1];
-       newarray[0] = n;
-       for (int i = 0; i < myArray.Length && i < newarray.Length; i++)
-       {
-           newarray[i+1] = myArray[i];
-       }  
-       myArray = newarray;
-   }
-
-   public static void AddToLastIndexInArray<T>(ref T[] myArray, T n)
-   {
-       T[] newarray = new T[myArray.Length + 1];
-
-       for (int i = 0; i < myArray.Length && i < newarray.Length; i++)
-       {
-           newarray[i] = myArray[i];
-       }
-       newarray[newarray.Length-1] = n;
-       myArray = newarray;
-   }
-    */
+   
 
     public static void AddToFirstIndexInArray(ref int[] myArray, int value)
     {
@@ -96,7 +73,52 @@ public class Class
 
     }
 
+    /*
+    public static void DeleteFirstElementFromArray(ref int[] myArray)
+    {
 
-    
+        int[] newArray = new int[myArray.Length -1 ];
+        
+        for (int i = 0; i < myArray.Length - 1; i++)
+        {
+            newArray[i] = myArray[i+1];
+
+
+        }
+        
+        myArray = newArray;
+
+    }
+    */
+
+    public static void RemoveAtFirstElement(ref int[] myArray, int index)
+    {
+        RemoveAt(ref myArray, 0);
+    }
+    public static void RemoveAtLastElement(ref int[] myArray, int index)
+    {
+        RemoveAt(ref myArray, myArray.Length-1);
+    }
+
+    public static void RemoveAt(ref int[] myArray, int index)
+    {
+
+        int[] newArray = new int[myArray.Length -1];
+        
+        for (int i = 0; i < index; i++)
+        {
+            newArray[i] = myArray[i];
+
+
+        }
+        for (int i = index+1; i < myArray.Length; i++)
+        {
+            newArray[i -1] = myArray[i];
+
+
+        }
+        myArray = newArray;
+
+    }
 
 }
